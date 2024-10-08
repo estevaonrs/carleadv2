@@ -1,8 +1,5 @@
 from .environment import BASE_DIR
 import os
-from pathlib import Path
-from dotenv import load_dotenv
-
 
 DATABASES = {
     'default': {
