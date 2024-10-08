@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="cf-form-section-2">
+           
+            <div class="cf-form-main-wrapper-2">
+                
+                <div class="cf-form-left-wrapper-2">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 100%; background-color: green;"></div>
+                    </div><br>
+                    <h2 class="cf-form-heading-2">Quase lá! Finalize sua avaliação</h2>
+                    <p class="cf-form-paragraph-2">Última etapa, preencha as informações e veja quanto vale o seu carro.</p>
+
+                    <div class="cf-footer-divider-2"></div>
+                </div>
+                <div class="cf-form-right-wrapper-2">
+                    <div class="cf-send-message-form-2 w-form">
+                        <form id="wf-form-Message-Form" name="wf-form-Message-Form" data-name="Message Form" method="post" data-wf-page-id="65e4963e8f07142b07fe55a0" data-wf-element-id="f9f2ac7a-a4c9-ebad-7f05-7b9eff18749c">
+                            {% csrf_token %}
+
+                            <input class="cf-borders-text-field-2 w-input" maxlength="256" name="name" data-name="Message Form - Name" placeholder="Nome" type="text" id="Message-Form-Name" required=""/>
+                            <input class="cf-borders-text-field-2 w-input" maxlength="256" name="email" data-name="Message/Email Address" placeholder="E-mail" type="email" id="Message-Form-Email-Address" required=""/>
+                            <input class="cf-borders-text-field-2 w-input" maxlength="256" name="phone" data-name="Message/Email Address" placeholder="Telefone" type="tel" id="Message-Form-Email-Address" required=""/>
+                            <div class="cf-form-dropdown-2"></div>
+                            <p class="cf-form-paragraph-2" style="color: #000; text-align: left; text-justify: inter-word; font-size: 16px;">Ao clicar em continuar, você autoriza que façamos contato com você e o tratamento dos seus dados para o envio de informações comerciais, conforme as disposições da Política de Privacidade e dos Termos de Uso do site.</p>
+                            <input type="hidden" name="modelo_label" value="{{ modelo_label }}">
+
+                            <input type="submit" data-wait="Please wait..." class="cf-form-gradient-submit-2 w-button" value="VER QUANTO VALE MEU CARRO"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const progress = 90;
+               
+            const progressBar = document.querySelector('.progress-bar');
+               
+            progressBar.style.width = progress + '%';
+        </script>
+{% endblock %}

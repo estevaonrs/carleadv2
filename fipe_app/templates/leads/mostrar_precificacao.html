@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p style="color: #fff;">Esse valor pode sofrer alterações na avaliação presencial, iremos verificar a condição do seu veículo e todos os parâmetros de mercado. Essa cotação feita reflete no ano, quilometragem e condições de seu veículo.</p>
+        </div>
+    </div>
+
+        <div class="brix---section-hero-top-small">
+            <div class="brix---container-default-2 w-container">
+              <br><br>
+  
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 100%; background-color: green;"></div>
+                </div>
+                <div class="brix---inner-container-574px---center flex-container">
+                    
+                    <div class="text-container">
+                        <div class="brix---text-center">
+                            <div class="quote-box">
+                                <div class="quote-text">Compramos seu <strong>{{ lead.brand }}</strong> e pagamos em média</div>
+                                <div class="quote-price"><strong>{{ lead.formatted_price }}</strong> </div>
+                                <br>
+                                <div class="understand-value"><i class="fa-solid fa-file-signature"></i> Entenda esse valor</div>
+                                <div class="car-model">Cotação para:<br> <strong>{{ lead.model }}</strong></div>
+                                <div>Só falta agendar sua visita para finalizar a sua avaliação!</div>
+                                <a href="https://wa.me/5585985532768?text=Olá! Sou o {{ lead.name }} e fiz uma avaliação no CompramosSeuCarro.net e meu carro é {{ lead.model }} e foi avaliado em {{ lead.formatted_price }} quero agendar uma avaliação presencial."
+                                class="inspection-btn brix---btn-secondary w-button">
+                                    Agendar avaliação presencial
+                                </a>            
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            const progress = 98;
+            
+            const progressBar = document.querySelector('.progress-bar');
+            
+            progressBar.style.width = progress + '%';
+            
+            
+            const modal = document.getElementById('modal');
+            const closeModal = document.getElementsByClassName('close')[0];
+
+            document.getElementsByClassName('understand-value')[0].addEventListener('click', function() {
+                modal.style.display = 'block';
+            });
+
+            closeModal.onclick = function() {
+                modal.style.display = 'none';
+            };
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        </script>
+        
+        <script src="{% static 'js/app.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/app2.js' %}" type="text/javascript"></script>
+
+{% endblock %}

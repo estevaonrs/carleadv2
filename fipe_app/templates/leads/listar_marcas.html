@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %} 
+<div class="cf-logo-section-2">
+    <div class="cf-logo-2---wrapper">
+                        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 100%; background-color: green;"></div>
+        </div><br>
+        <h3 class="cf-logo-2-heading">SELECIONE SUA MARCA</h3>
+        <div class="container">
+            <div class="search-container" style="display: flex; align-items: center;">
+                <form method="get" action="" style="display: flex;">
+                    <input type="text" id="search-input" name="search" placeholder="Pesquisar marca" value="{{ request.GET.search }}" style="height: 40px; border-radius: 5px 0 0 5px; padding: 5px 10px;"/>
+                    <button type="submit" style="padding: 5px; background: #000c2c; border: none; border-radius: 0 5px 5px 0; display: flex; align-items: center;">
+                        <i style="color: white;" class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <br><br>
+
+        <form method="post" action="{% url 'fipe_app:listar_modelos' %}">
+            {% csrf_token %}
+            <div class="cf-logos-2--wrapper">
+                {% for marca in marcas %}
+                <button type="submit" name="marca_id" value="{{ marca.Value }}" class="cf-logo-button">
+                    <img src="{% static marca.Image %}" alt="{{ marca.Label }}" class="cf-logo-image"/>
+                    <span style="text-align: left;" class="brand-text">{{ marca.Label }}</span>
+                </button>
+                <input type="hidden" name="marca_label" value="{{ marca.Label }}">
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</div>
+        
+<script>
+    const progress = 10;
+                
+    const progressBar = document.querySelector('.progress-bar');
+    
+    progressBar.style.width = progress + '%';</script>
+</script>
+{% endblock %}
+
+
+
+
